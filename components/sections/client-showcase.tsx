@@ -3,14 +3,15 @@
 import * as React from "react"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
-import acme from "@/../public/acme-corp-logo.png"
-import globex from "@/../public/globex-inspired-logo.png"
-import initech from "@/../public/generic-office-logo.png"
-import umbrella from "@/../public/abstract-umbrella-logo.png"
-import soylent from "@/../public/soylent-logo.jpg"
-import hooli from "@/../public/hooli-logo.jpg"
-import massive from "@/../public/massive-dynamic-logo.jpg"
-import stark from "@/../public/stark-industries-inspired-logo.png"
+// <CHANGE> Fix static image imports to use '@/public/...'
+import acme from "@/public/acme-corp-logo.png"
+import globex from "@/public/globex-inspired-logo.png"
+import initech from "@/public/generic-office-logo.png"
+import umbrella from "@/public/abstract-umbrella-logo.png"
+import soylent from "@/public/soylent-logo.jpg"
+import hooli from "@/public/hooli-logo.jpg"
+import massive from "@/public/massive-dynamic-logo.jpg"
+import stark from "@/public/stark-industries-inspired-logo.png"
 
 type Client = {
   name: string

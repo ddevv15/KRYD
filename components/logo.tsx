@@ -1,6 +1,7 @@
 import type * as React from "react"
 import Image from "next/image"
-import krydLogo from "@/../public/images/KRYD.png"
+// <CHANGE> Fix static image import to use '@/public/...'
+import krydLogo from "@/public/images/KRYD.png"
 
 type LogoProps = Omit<React.ComponentProps<typeof Image>, "src">
 

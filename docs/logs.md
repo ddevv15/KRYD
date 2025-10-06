@@ -220,3 +220,24 @@ Policy:
 
 - components/logo.tsx (UPDATED)
 - components/sections/client-showcase.tsx (UPDATED)
+
+---
+
+## 2025-10-06 — LOG-0013
+
+**User Prompt**
+
+> Fix incorrect static imports '@/../public/...'. Replace with '@/public/...'. Verify build.
+
+**Action Taken**
+
+- Searched repo for '@/../public' and '../public' imports.
+- Updated imports to '@/public/...':
+  - `components/logo.tsx` // <CHANGE>
+  - `components/sections/client-showcase.tsx` // <CHANGE>
+- Build succeeded (`npm run build`).
+
+**Files Affected**
+
+- components/logo.tsx (UPDATED)
+- components/sections/client-showcase.tsx (UPDATED)
