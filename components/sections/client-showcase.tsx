@@ -3,21 +3,29 @@
 import * as React from "react"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
+import acme from "@/../public/acme-corp-logo.png"
+import globex from "@/../public/globex-inspired-logo.png"
+import initech from "@/../public/generic-office-logo.png"
+import umbrella from "@/../public/abstract-umbrella-logo.png"
+import soylent from "@/../public/soylent-logo.jpg"
+import hooli from "@/../public/hooli-logo.jpg"
+import massive from "@/../public/massive-dynamic-logo.jpg"
+import stark from "@/../public/stark-industries-inspired-logo.png"
 
 type Client = {
   name: string
-  src: string
+  src: any
 }
 
 const clients: Client[] = [
-  { name: "Acme Corp", src: "/acme-corp-logo.png" },
-  { name: "Globex", src: "/globex-inspired-logo.png" },
-  { name: "Initech", src: "/generic-office-logo.png" },
-  { name: "Umbrella", src: "/abstract-umbrella-logo.png" },
-  { name: "Soylent", src: "/soylent-logo.jpg" },
-  { name: "Hooli", src: "/hooli-logo.jpg" },
-  { name: "Massive Dynamic", src: "/massive-dynamic-logo.jpg" },
-  { name: "Stark Industries", src: "/stark-industries-inspired-logo.png" },
+  { name: "Acme Corp", src: acme },
+  { name: "Globex", src: globex },
+  { name: "Initech", src: initech },
+  { name: "Umbrella", src: umbrella },
+  { name: "Soylent", src: soylent },
+  { name: "Hooli", src: hooli },
+  { name: "Massive Dynamic", src: massive },
+  { name: "Stark Industries", src: stark },
 ]
 
 export function ClientShowcase({
@@ -49,13 +57,7 @@ export function ClientShowcase({
                 aria-label={c.name}
                 title={c.name}
               >
-                <Image
-                  src={c.src || "/placeholder.svg"}
-                  alt={c.name}
-                  width={160}
-                  height={40}
-                  className="h-8 md:h-10 w-auto"
-                />
+                <Image src={c.src} alt={c.name} width={160} height={40} className="h-8 md:h-10 w-auto" />
               </div>
             ))}
           </div>

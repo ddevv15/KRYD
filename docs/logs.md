@@ -201,3 +201,22 @@ Policy:
 
 - components/logo.tsx (UPDATED)
 - components/sections/client-showcase.tsx (UPDATED)
+
+---
+
+## 2025-10-06 — LOG-0012
+
+**User Prompt**
+
+> Use a relative import via the public directory... make the relative path based on our basePath and fix the issue
+
+**Action Taken**
+
+- Updated `components/logo.tsx` to statically import `public/images/KRYD.png` and pass to `next/image`.
+- Updated `components/sections/client-showcase.tsx` to statically import all client logos from `public/` and pass to `next/image`.
+- No changes made to `next.config.mjs` per instruction.
+
+**Files Affected**
+
+- components/logo.tsx (UPDATED)
+- components/sections/client-showcase.tsx (UPDATED)

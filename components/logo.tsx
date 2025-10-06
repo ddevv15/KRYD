@@ -1,16 +1,15 @@
 import type * as React from "react"
 import Image from "next/image"
+import krydLogo from "@/../public/images/KRYD.png"
 
 type LogoProps = Omit<React.ComponentProps<typeof Image>, "src">
 
 export function Logo({ alt = "KRYD logo", className, ...props }: LogoProps) {
   return (
     <Image
-      src="/images/KRYD.png"
+      src={krydLogo}
       alt={alt}
       className={className}
-      width={512}
-      height={512}
       {...props}
     />
   )
