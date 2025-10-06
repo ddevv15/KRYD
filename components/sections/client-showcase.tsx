@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import Image from "next/image"
 import { cn } from "@/lib/utils"
 
 type Client = {
@@ -48,7 +49,13 @@ export function ClientShowcase({
                 aria-label={c.name}
                 title={c.name}
               >
-                <img src={c.src || "/placeholder.svg"} alt={c.name} className="h-8 md:h-10 w-auto" loading="lazy" />
+                <Image
+                  src={c.src || "/placeholder.svg"}
+                  alt={c.name}
+                  width={160}
+                  height={40}
+                  className="h-8 md:h-10 w-auto"
+                />
               </div>
             ))}
           </div>

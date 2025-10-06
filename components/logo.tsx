@@ -1,8 +1,17 @@
 import type * as React from "react"
+import Image from "next/image"
 
-type LogoProps = React.ImgHTMLAttributes<HTMLImageElement>
+type LogoProps = Omit<React.ComponentProps<typeof Image>, "src">
 
-// Simple reusable team logo component
 export function Logo({ alt = "KRYD logo", className, ...props }: LogoProps) {
-  return <img src="/images/KRYD.png" alt={alt} className={className} {...props} />
+  return (
+    <Image
+      src="/images/KRYD.png"
+      alt={alt}
+      className={className}
+      width={512}
+      height={512}
+      {...props}
+    />
+  )
 }

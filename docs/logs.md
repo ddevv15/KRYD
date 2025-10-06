@@ -181,3 +181,23 @@ Policy:
 **Files Affected**
 
 - .gitignore (NEW)
+
+---
+
+## 2025-10-06 — LOG-0011
+
+**User Prompt**
+
+> @https://ddevv15.github.io/images/KRYD.png convert the logo and all the other images to next/image, it would be helpful in future as well right?
+
+**Action Taken**
+
+- Migrated raw `<img>` to `next/image`:
+  - `components/logo.tsx` now uses `next/image` with fixed width/height.
+  - `components/sections/client-showcase.tsx` images converted to `next/image`.
+- Verified TypeScript and lints pass.
+
+**Files Affected**
+
+- components/logo.tsx (UPDATED)
+- components/sections/client-showcase.tsx (UPDATED)
