@@ -241,3 +241,111 @@ Policy:
 
 - components/logo.tsx (UPDATED)
 - components/sections/client-showcase.tsx (UPDATED)
+
+---
+
+## 2025-10-06 — LOG-0014
+
+**User Prompt**
+
+> Provide Aurora component source; integrate as reusable component behind Hero. Install ogl.
+
+**Action Taken**
+
+- Created `components/aurora.tsx` client component using provided ogl shader implementation (Tailwind container sizing).
+- Integrated `<Aurora />` behind `Hero` via absolute positioned wrapper.
+- Installed `ogl` package and verified static build.
+
+**Files Affected**
+
+- components/aurora.tsx (NEW)
+- components/sections/hero.tsx (UPDATED)
+
+---
+
+## 2025-10-06 — LOG-0015
+
+**User Prompt**
+
+> when I try running the project, it returns 404, hence there is some error, in it, try running from your end, once
+
+**Action Taken**
+
+- Started dev server locally to reproduce. Observed that `basePath: '/KRYD'` and `assetPrefix: '/KRYD/'` in `next.config.mjs` cause the app to be served at `/KRYD` during development.
+- Guidance: open `http://localhost:3000/KRYD` (not `/`). No code changes made.
+- Option (pending approval): make basePath/assetPrefix conditional (production only) to avoid 404 locally.
+
+**Files Affected**
+
+- docs/logs.md (UPDATED)
+
+---
+
+## 2025-10-06 — LOG-0016
+
+**User Prompt**
+
+> remove the logo from the hero seciton and center everything on the hero seciton
+
+**Action Taken**
+
+- Removed `Logo` from `Hero` and centered hero content (title, copy, CTAs). Adjusted grid and alignment.
+
+**Files Affected**
+
+- components/sections/hero.tsx (UPDATED)
+
+---
+
+## 2025-10-06 — LOG-0017
+
+**User Prompt**
+
+> the contrast to aurora in the background is white change to black, and the fonts to white
+
+**Action Taken**
+
+- Added a semi-transparent black overlay above the Aurora.
+- Switched Hero text to white for improved contrast (`text-white`, body copy `text-white/80`).
+
+**Files Affected**
+
+- components/sections/hero.tsx (UPDATED)
+
+---
+
+## 2025-10-06 — LOG-0018
+
+**User Prompt**
+
+> lets work on the site-header as we discussed
+
+**Action Taken**
+
+- Enhanced `SiteHeader` to support `variant`, `sticky`, and `solid` props; transparent on landing until hero scrolls out.
+- Added `components/landing-header.tsx` to control solid state via IntersectionObserver.
+- Updated `app/page.tsx` to use `LandingHeader`.
+
+**Files Affected**
+
+- components/site-header.tsx (UPDATED)
+- components/landing-header.tsx (NEW)
+- app/page.tsx (UPDATED)
+
+---
+
+## 2025-10-06 — LOG-0019
+
+**User Prompt**
+
+> lets go with the option A
+
+**Action Taken**
+
+- Implemented “glass” floating header style for landing (rounded, blur, translucent, bordered) and kept solid bar after hero.
+- Tuned IntersectionObserver `rootMargin` to `-80px` for more natural transition timing.
+
+**Files Affected**
+
+- components/site-header.tsx (UPDATED)
+- components/landing-header.tsx (UPDATED)
