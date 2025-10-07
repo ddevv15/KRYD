@@ -402,3 +402,25 @@ Policy:
 
 - app/industries/page.tsx (NEW)
 - components/site-header.tsx (UPDATED)
+
+---
+
+## 2025-10-06 — LOG-0023
+
+**User Prompt**
+
+> Make this checked-out version the HEAD and push it to main.
+
+**Action Taken**
+
+- Set local branch to main at current detached HEAD and force-pushed to origin:
+  - `git checkout -B main`
+  - `git push -f origin main`
+
+**Notes**
+
+- This replaces the remote main history tip with the currently checked-out commit.
+
+**Files Affected**
+
+- Git history update only; no file diffs in this step.
