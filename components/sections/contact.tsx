@@ -18,15 +18,15 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" aria-labelledby="contact-title" className="border-t border-border bg-background">
-      <div className="mx-auto max-w-6xl px-4 py-16 md:py-20">
-        <h2 id="contact-title" className="text-balance text-2xl font-semibold md:text-3xl flex items-center gap-2">
-          <Logo className="h-12 w-12" alt="" aria-hidden />
+    <section id="contact" aria-labelledby="contact-title" className="bg-black">
+      <div className="mx-auto max-w-6xl px-4 py-14 sm:py-16 md:py-20">
+        <h2 id="contact-title" className="text-balance text-2xl sm:text-3xl font-semibold flex items-center gap-2">
+          <Logo className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12" alt="" aria-hidden />
           <span>Let’s collaborate</span>
         </h2>
 
         <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">
-          <form onSubmit={handleSubmit} className="rounded-lg border border-border bg-card p-5">
+          <form onSubmit={handleSubmit} className="rounded-lg border border-border bg-card p-4 sm:p-5">
             <div className="grid gap-4">
               <div className="grid gap-2">
                 <Label htmlFor="name">Name</Label>
@@ -51,7 +51,7 @@ export function Contact() {
             </div>
           </form>
 
-          <aside className="rounded-lg border border-border bg-card p-5">
+          <aside className="rounded-lg border border-border bg-card p-4 sm:p-5">
             <h3 className="text-sm font-medium">How we work</h3>
             <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-muted-foreground">
               <li>Start with a solid, accessible foundation.</li>

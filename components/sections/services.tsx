@@ -26,16 +26,16 @@ export function Services() {
   ]
 
   return (
-    <section id="services" aria-labelledby="services-title" className="border-t border-border bg-background">
-      <div className="mx-auto max-w-6xl px-4 py-16 md:py-20">
-        <h2 id="services-title" className="text-balance text-2xl font-semibold md:text-3xl flex items-center gap-2">
-          <Logo className="h-12 w-12" alt="" aria-hidden />
+    <section id="services" aria-labelledby="services-title" className="bg-black">
+      <div className="mx-auto max-w-6xl px-4 py-14 sm:py-16 md:py-20">
+        <h2 id="services-title" className="text-balance text-2xl sm:text-3xl font-semibold flex items-center gap-2">
+          <Logo className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12" alt="" aria-hidden />
           <span>Our Services</span>
         </h2>
-        <p className="mt-3 text-sm text-muted-foreground md:text-base">
+        <p className="mt-3 text-sm sm:text-base text-muted-foreground">
           We combine creativity, strategy, and execution to help brands make a lasting impression.
         </p>
-        <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-3">
           {services.map((s) => (
             <article key={s.title} className="rounded-lg border border-border bg-card p-5">
               <h3 className="text-sm font-medium">{s.title}</h3>
@@ -44,7 +44,7 @@ export function Services() {
           ))}
         </div>
         {/* Client Showcase Component */}
-        <ClientShowcase className="mt-12" />
+        {/* <ClientShowcase className="mt-12" /> */}
       </div>
     </section>
   )

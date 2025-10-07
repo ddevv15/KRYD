@@ -349,3 +349,56 @@ Policy:
 
 - components/site-header.tsx (UPDATED)
 - components/landing-header.tsx (UPDATED)
+
+---
+
+## 2025-10-06 — LOG-0020
+
+**User Prompt**
+
+> Make it responsive for all the devices, such as laptops, tablets, and phones
+
+**Action Taken**
+
+- Header: Added mobile sheet menu, responsive sizing, and spacing adjustments; preserved glass styling.
+- Hero: Full-viewport height with centered content; responsive typography and CTA sizes/gaps.
+
+**Files Affected**
+
+- components/site-header.tsx (UPDATED)
+- components/sections/hero.tsx (UPDATED)
+
+---
+
+## 2025-10-06 — LOG-0021
+
+**User Prompt**
+
+> remove the unecessary files such as modules, and etc, I wish to compress the project and upload zip to another platform, so lets remove the modules build files and stuff for now
+
+**Action Taken**
+
+- Removed local artifacts to slim the project for zipping: `node_modules/`, `.next/`, `out/`, `.next-static/`, `.turbo/`, `.cache/`.
+- Note: Run `npm i` to restore dependencies after unzipping.
+
+**Files Affected**
+
+- Workspace cleanup (no source files changed)
+
+---
+
+## 2025-10-06 — LOG-0022
+
+**User Prompt**
+
+> Build an “Industries We Serve” page and add navigation.
+
+**Action Taken**
+
+- Created `app/industries/page.tsx` with hero (Aurora + overlay), responsive 12‑card grid, and CTA.
+- Added "Industries" link to header (desktop + mobile sheet).
+
+**Files Affected**
+
+- app/industries/page.tsx (NEW)
+- components/site-header.tsx (UPDATED)

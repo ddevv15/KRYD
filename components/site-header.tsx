@@ -26,26 +26,27 @@ export function SiteHeader({}: SiteHeaderProps = {}) {
     <header
       id="site-header"
       className={cn(
-        "fixed left-1/2 top-4 z-50 w-[calc(100%-2rem)] max-w-6xl -translate-x-1/2 rounded-full border border-white/20 bg-white/10 text-white shadow-lg backdrop-blur supports-[backdrop-filter]:backdrop-blur",
+        "fixed left-1/2 top-3 z-50 w-[calc(100%-1rem)] sm:top-4 sm:w-[calc(100%-2rem)] max-w-6xl -translate-x-1/2 rounded-full border border-white/30 bg-white/10 text-white shadow-lg backdrop-blur supports-[backdrop-filter]:backdrop-blur",
       )}
     >
       <div id="site-header-inner" className={cn("mx-auto flex items-center justify-between px-3 py-2 sm:px-4")}> 
         <Link id="site-header-home" href="/" className="inline-flex items-center gap-2">
           <span className="sr-only">Home</span>
           <Logo className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 shrink-0" alt="" aria-hidden />
-          <span className={cn("text-sm font-medium tracking-tight", "text-white")}>KRYD</span>
+          <span className={cn("text-sm font-medium tracking-tight", "text-white")}>KRYD CoLabs</span>
         </Link>
 
         <nav id="site-header-nav" aria-label="Primary" className="hidden items-center gap-6 sm:flex">
-          <a href="#overview" className={cn("text-sm text-white/80 hover:text-white")}>Overview</a>
-          <a href="#services" className={cn("text-sm text-white/80 hover:text-white")}>Services</a>
-          <a href="#contact" className={cn("text-sm text-white/80 hover:text-white")}>Contact</a>
+          <Link href="/" className={cn("text-sm text-white/80 hover:text-white")}>Home</Link>
+          <Link href="/#overview" className={cn("text-sm text-white/80 hover:text-white")}>Overview</Link>
+          <Link href="/#services" className={cn("text-sm text-white/80 hover:text-white")}>Services</Link>
+          <Link href="/industries" className={cn("text-sm text-white/80 hover:text-white")}>Industries</Link>
         </nav>
 
         {/* Desktop CTA */}
         <div id="site-header-cta" className="hidden items-center gap-2 sm:flex">
-          <Button asChild size="sm" className="border-white/20 bg-white/10 text-white hover:bg-white/15">
-            <a href="#contact">Get in touch</a>
+          <Button asChild size="sm" className="border-white/30 bg-white/10 text-white hover:bg-white/15">
+            <Link href="/#contact">Get in touch</Link>
           </Button>
         </div>
 
@@ -53,28 +54,33 @@ export function SiteHeader({}: SiteHeaderProps = {}) {
         <div className="sm:hidden">
           <Sheet>
             <SheetTrigger asChild>
-              <Button size="icon" variant="outline" className="border-white/20 bg-white/10 text-white hover:bg-white/15">
+              <Button size="icon" variant="outline" className="border-white/30 bg-white/10 text-white hover:bg-white/15">
                 <Menu className="h-5 w-5" />
                 <span className="sr-only">Open menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="bg-black/90 text-white border-white/20">
-              <SheetHeader>
-                <SheetTitle className="text-white">Menu</SheetTitle>
-                <SheetDescription className="text-white/70">Navigate</SheetDescription>
+            <SheetContent side="right" className="bg-black/90 text-white border-white/30 p-5">
+              <SheetHeader className="space-y-1">
+                <SheetTitle className="text-white text-base">Menu</SheetTitle>
+                {/* <SheetDescription className="text-white/70 text-sm">Navigate</SheetDescription> */}
               </SheetHeader>
-              <div className="mt-4 flex flex-col gap-4">
+              <nav className="mt-6 flex flex-col gap-3">
                 <SheetClose asChild>
-                  <a href="#overview" className="text-white/90 hover:text-white">Overview</a>
+                  <Link href="/" className="rounded-md px-2 py-2 text-white/90 hover:text-white hover:bg-white/10">Home</Link>
                 </SheetClose>
                 <SheetClose asChild>
-                  <a href="#services" className="text-white/90 hover:text-white">Services</a>
+                  <Link href="/#overview" className="rounded-md px-2 py-2 text-white/90 hover:text-white hover:bg-white/10">Overview</Link>
                 </SheetClose>
                 <SheetClose asChild>
-                  <a href="#contact" className="text-white/90 hover:text-white">Contact</a>
+                  <Link href="/#services" className="rounded-md px-2 py-2 text-white/90 hover:text-white hover:bg-white/10">Services</Link>
                 </SheetClose>
                 <SheetClose asChild>
-                  <Button asChild className="mt-2 border-white/20 bg-white/10 text-white hover:bg-white/15">
+                  <Link href="/industries" className="rounded-md px-2 py-2 text-white/90 hover:text-white hover:bg-white/10">Industries</Link>
+                </SheetClose>
+              </nav>
+              <div className="mt-6">
+                <SheetClose asChild>
+                  <Button asChild className="w-full border-white/30 bg-white/10 text-white hover:bg-white/15">
                     <a href="#contact">Get in touch</a>
                   </Button>
                 </SheetClose>
