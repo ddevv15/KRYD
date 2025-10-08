@@ -817,3 +817,41 @@ Policy:
 
 - components/sections/magic-bento-section.tsx (UPDATED)
 - docs/logs.md (UPDATED)
+
+---
+
+## 2025-10-08 — LOG-0037
+
+**User Prompt**
+
+> Fix mobile layout card order. The "Our Services" header card appears last on mobile, but it should come right after the "Why Us" cards, before the individual service cards.
+
+**Action Taken**
+
+- Changed mobile layout from grid to flexbox with `display: flex; flex-direction: column`
+- Implemented CSS `order` property to reorder cards on mobile (max-width: 599px):
+  - **Big Why Us**: order 0 (first)
+  - **Why Us value cards** (4 cards): order 1-4
+  - **Big Services**: order 5 (moved up from position 12)
+  - **Service cards** (6 cards): order 6-11 (after Big Services)
+- Desktop grid layout unchanged (maintains perfect alignment)
+- Mobile now shows logical flow: header → values → header → services
+
+**Mobile Card Order (Before):**
+
+1. Big Why Us
+2. Why Us cards (4)
+3. Service cards (6)
+4. Big Services ❌ (wrong position)
+
+**Mobile Card Order (After):**
+
+1. Big Why Us
+2. Why Us cards (4)
+3. Big Services ✅ (correct position)
+4. Service cards (6)
+
+**Files Affected**
+
+- components/sections/magic-bento-section.tsx (UPDATED)
+- docs/logs.md (UPDATED)

@@ -790,12 +790,28 @@ export function MagicBentoSection({
               grid-template-columns: 1fr;
               width: 100%;
               gap: 0.5rem;
+              display: flex;
+              flex-direction: column;
             }
             
             .card-responsive .card {
               width: 100%;
               min-height: 180px;
             }
+            
+            /* Mobile card order: Big Why Us → Why Us cards → Big Services → Service cards */
+            .card-responsive .card:nth-child(1) { order: 0; } /* Big Why Us */
+            .card-responsive .card:nth-child(2) { order: 1; } /* Why Us value 1 */
+            .card-responsive .card:nth-child(3) { order: 2; } /* Why Us value 2 */
+            .card-responsive .card:nth-child(4) { order: 3; } /* Why Us value 3 */
+            .card-responsive .card:nth-child(5) { order: 4; } /* Why Us value 4 */
+            .card-responsive .card:nth-child(12) { order: 5; } /* Big Services - moved up */
+            .card-responsive .card:nth-child(6) { order: 6; } /* Service 1 */
+            .card-responsive .card:nth-child(7) { order: 7; } /* Service 2 */
+            .card-responsive .card:nth-child(8) { order: 8; } /* Service 3 */
+            .card-responsive .card:nth-child(9) { order: 9; } /* Service 4 */
+            .card-responsive .card:nth-child(10) { order: 10; } /* Service 5 */
+            .card-responsive .card:nth-child(11) { order: 11; } /* Service 6 */
           }
           
           /* Performance: GPU acceleration hints */
