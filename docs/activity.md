@@ -128,3 +128,57 @@ Purpose: Track actions performed in the project along with the initiating user p
 **Outcome**
 
 - origin/main now points to the preferred baseline commit.
+
+---
+
+## 2025-10-08 — ACT-0008
+
+**User Prompt**
+
+> Implement unified Magic Bento section replacing 'Why Us' and 'Our Services' sections. Use Magic Bento component from reactbits.dev with GSAP animations. Create 2 header cards (Why Us + Our Services) with larger visual span at top, followed by 4 'Why Us' cards and 5 'Services' cards below. Move Who We Are section to second position after Hero. Update navigation: "Overview" → "Who We Are", "Services" → Magic Bento section. Proceed systematically.
+
+**Actions**
+
+- Installed `gsap` dependency (v3.x) for advanced animations.
+- Created `components/sections/magic-bento-section.tsx`:
+  - Implemented full Magic Bento component with GSAP-powered interactions
+  - Added particle effects, global spotlight, border glow, tilt, magnetism, click ripples
+  - Configured responsive bento grid layout (1/2/4 columns based on viewport)
+- Populated with actual content:
+  - 2 header cards: "Why Us" and "Our Services"
+  - 4 "Why Us" value proposition cards
+  - 5 service offering cards (total 11 cards)
+- Restructured `app/page.tsx`:
+  - New order: Hero → WhoWeAre → MagicBentoSection → Contact
+  - Removed old Overview and Services components
+- Updated `components/site-header.tsx`:
+  - "Overview" nav link renamed to "Who We Are" (→ #who-we-are)
+  - "Services" nav link now points to #overview (Magic Bento section)
+  - Applied to both desktop and mobile navigation
+- Deleted deprecated component files:
+  - `components/sections/overview.tsx`
+  - `components/sections/services.tsx`
+
+**Files Changed**
+
+- package.json (UPDATED - added gsap)
+- components/sections/magic-bento-section.tsx (NEW)
+- app/page.tsx (UPDATED)
+- components/site-header.tsx (UPDATED)
+- components/sections/overview.tsx (DELETED)
+- components/sections/services.tsx (DELETED)
+- docs/logs.md (UPDATED)
+- docs/activity.md (UPDATED)
+
+**Technical Details**
+
+- Magic Bento features: spotlight tracking, particle animations, 3D tilt, magnetic hover, click ripple effects
+- Grid layout: first 2 cards span 2 columns (headers), remaining 9 cards fill naturally
+- Performance: reduced particle count to 8, disabled animations on mobile
+- Section ID: `#overview` for backward compatibility with existing navigation
+
+**Outcome**
+
+- Unified, interactive "Why Us + Services" section with dynamic GSAP animations
+- Improved visual hierarchy with prominent header cards
+- Cleaner codebase with consolidated logic in single reusable component

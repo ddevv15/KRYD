@@ -38,8 +38,8 @@ export function SiteHeader({}: SiteHeaderProps = {}) {
 
         <nav id="site-header-nav" aria-label="Primary" className="hidden items-center gap-6 sm:flex">
           <Link href="/" className={cn("text-sm text-white/80 hover:text-white")}>Home</Link>
-          <Link href="/#overview" className={cn("text-sm text-white/80 hover:text-white")}>Overview</Link>
-          <Link href="/#services" className={cn("text-sm text-white/80 hover:text-white")}>Services</Link>
+          <Link href="/#who-we-are" className={cn("text-sm text-white/80 hover:text-white")}>Who We Are</Link>
+          <Link href="/#overview" className={cn("text-sm text-white/80 hover:text-white")}>Services</Link>
           <Link href="/industries" className={cn("text-sm text-white/80 hover:text-white")}>Industries</Link>
         </nav>
 
@@ -69,10 +69,10 @@ export function SiteHeader({}: SiteHeaderProps = {}) {
                   <Link href="/" className="rounded-md px-2 py-2 text-white/90 hover:text-white hover:bg-white/10">Home</Link>
                 </SheetClose>
                 <SheetClose asChild>
-                  <Link href="/#overview" className="rounded-md px-2 py-2 text-white/90 hover:text-white hover:bg-white/10">Overview</Link>
+                  <Link href="/#who-we-are" className="rounded-md px-2 py-2 text-white/90 hover:text-white hover:bg-white/10">Who We Are</Link>
                 </SheetClose>
                 <SheetClose asChild>
-                  <Link href="/#services" className="rounded-md px-2 py-2 text-white/90 hover:text-white hover:bg-white/10">Services</Link>
+                  <Link href="/#overview" className="rounded-md px-2 py-2 text-white/90 hover:text-white hover:bg-white/10">Services</Link>
                 </SheetClose>
                 <SheetClose asChild>
                   <Link href="/industries" className="rounded-md px-2 py-2 text-white/90 hover:text-white hover:bg-white/10">Industries</Link>
