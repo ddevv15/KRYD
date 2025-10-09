@@ -24,8 +24,8 @@ export function Contact() {
       }
       
       const result = await emailjs.sendForm(
-        'service_5uefg5i',  // Service ID
-        'template_xowosez', // Template ID
+        'service_thddmyk',  // Service ID
+        'template_keixzan', // Template ID
         formRef.current,
         'a-UbED8iyoshDGU-Z' // Public Key
       )
