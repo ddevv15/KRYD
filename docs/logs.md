@@ -946,3 +946,27 @@ Policy:
 
 - components/sections/contact.tsx (UPDATED)
 - docs/logs.md (UPDATED)
+
+---
+
+## 2025-10-08 — LOG-0041
+
+**User Prompt**
+
+> Update EmailJS credentials with new service configuration
+
+**Action Taken**
+
+- Updated EmailJS configuration in contact form with new credentials:
+  - Service ID: `service_5uefg5i` (previously `service_ljaq69a`)
+  - Template ID: `template_xowosez` (previously `template_uo116zx`)
+  - Public Key: `a-UbED8iyoshDGU-Z` (previously `XKpSkLIQJS5dbqsVt`)
+- Contact form now uses the updated EmailJS service configuration
+- All existing functionality maintained (form reset, loading states, error handling)
+
+**Note**: Private key provided by user is stored securely and not used in client-side code (EmailJS best practice)
+
+**Files Affected**
+
+- components/sections/contact.tsx (UPDATED)
+- docs/logs.md (UPDATED)

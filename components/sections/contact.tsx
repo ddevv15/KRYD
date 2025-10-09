@@ -24,10 +24,10 @@ export function Contact() {
       }
       
       const result = await emailjs.sendForm(
-        'service_ljaq69a',  // Service ID
-        'template_uo116zx', // Template ID
+        'service_5uefg5i',  // Service ID
+        'template_xowosez', // Template ID
         formRef.current,
-        'XKpSkLIQJS5dbqsVt' // Public Key
+        'a-UbED8iyoshDGU-Z' // Public Key
       )
       
       console.log("Email sent successfully:", result.text)
