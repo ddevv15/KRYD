@@ -8,6 +8,10 @@ export const metadata: Metadata = {
   title: 'KRYD CoLabs',
   description: 'KRYD CoLabs',
   generator: 'KRYD CoLabs',
+  icons: {
+    icon: '/images/KRYD.png',
+    apple: '/images/KRYD.png',
+  },
 }
 
 export default function RootLayout({

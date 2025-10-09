@@ -8,13 +8,37 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
+import emailjs from "@emailjs/browser"
 
 export function Contact() {
-  const [status, setStatus] = useState<"idle" | "submitted">("idle")
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    setStatus("submitted")
+    setStatus("loading")
+
+    try {
+      const form = e.currentTarget
+      
+      await emailjs.sendForm(
+        'service_ljaq69a',  // Service ID
+        'template_uo116zx', // Template ID
+        form,
+        'XKpSkLIQJS5dbqsVt' // Public Key
+      )
+      
+      setStatus("success")
+      form.reset()
+      
+      // Reset success message after 5 seconds
+      setTimeout(() => setStatus("idle"), 5000)
+    } catch (error) {
+      console.error("EmailJS Error:", error)
+      setStatus("error")
+      
+      // Reset error message after 5 seconds
+      setTimeout(() => setStatus("idle"), 5000)
+    }
   }
 
   return (
@@ -41,12 +65,15 @@ export function Contact() {
                 <Textarea id="message" name="message" placeholder="What can we help you build?" required />
               </div>
               <div className="flex items-center justify-end">
-                <Button type="submit" size="sm">
-                  Send
+                <Button type="submit" size="sm" disabled={status === "loading"}>
+                  {status === "loading" ? "Sending..." : "Send"}
                 </Button>
               </div>
-              {status === "submitted" && (
-                <p className="text-sm text-muted-foreground">Thanks! We’ll get back to you shortly.</p>
+              {status === "success" && (
+                <p className="text-sm text-green-500">✓ Message sent successfully! We'll get back to you shortly.</p>
+              )}
+              {status === "error" && (
+                <p className="text-sm text-red-500">✗ Failed to send message. Please try again.</p>
               )}
             </div>
           </form>

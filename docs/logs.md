@@ -855,3 +855,61 @@ Policy:
 
 - components/sections/magic-bento-section.tsx (UPDATED)
 - docs/logs.md (UPDATED)
+
+---
+
+## 2025-10-08 — LOG-0038
+
+**User Prompt**
+
+> Add logo in the title bar (browser tab favicon).
+
+**Action Taken**
+
+- Added favicon configuration to Next.js metadata in `app/layout.tsx`
+- Set KRYD logo (`/images/KRYD.png`) as browser tab icon
+- Added both standard icon and Apple touch icon for better cross-platform support
+- Favicon now displays in browser tab, bookmarks, and history
+
+**Files Affected**
+
+- app/layout.tsx (UPDATED)
+- docs/logs.md (UPDATED)
+
+---
+
+## 2025-10-08 — LOG-0039
+
+**User Prompt**
+
+> Integrate EmailJS to the contact form for sending emails. Service ID: service_ljaq69a, Public Key: XKpSkLIQJS5dbqsVt, Template ID: template_uo116zx
+
+**Action Taken**
+
+- Installed `@emailjs/browser` package (v4.x)
+- Integrated EmailJS into contact form component (`components/sections/contact.tsx`)
+- Configured EmailJS with provided credentials:
+  - Service ID: `service_ljaq69a`
+  - Template ID: `template_uo116zx`
+  - Public Key: `XKpSkLIQJS5dbqsVt`
+- Implemented async form submission with EmailJS API
+- Added comprehensive state management:
+  - `idle`: Default state
+  - `loading`: While sending email
+  - `success`: Email sent successfully
+  - `error`: Failed to send email
+- Enhanced user feedback:
+  - Button shows "Sending..." during submission
+  - Button disabled during loading to prevent multiple submissions
+  - Success message (green): "✓ Message sent successfully! We'll get back to you shortly."
+  - Error message (red): "✗ Failed to send message. Please try again."
+  - Messages auto-hide after 5 seconds
+  - Form resets on successful submission
+- Added error logging to console for debugging
+- Contact form now fully functional with email delivery
+
+**Files Affected**
+
+- package.json (UPDATED - added @emailjs/browser)
+- components/sections/contact.tsx (UPDATED)
+- docs/logs.md (UPDATED)
