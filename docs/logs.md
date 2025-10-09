@@ -913,3 +913,36 @@ Policy:
 - package.json (UPDATED - added @emailjs/browser)
 - components/sections/contact.tsx (UPDATED)
 - docs/logs.md (UPDATED)
+
+---
+
+## 2025-10-08 — LOG-0040
+
+**User Prompt**
+
+> Fix contact form not clearing after submission and check for any bugs
+
+**Action Taken**
+
+- Fixed form reset issue by implementing `useRef` hook for better form control
+- Updated form field names to match EmailJS template variable conventions:
+  - `name` → `from_name` (standard EmailJS sender name variable)
+  - `email` → `from_email` (standard EmailJS sender email variable)
+  - `message` remains the same
+- Enhanced error handling:
+  - Added form reference null check
+  - Added success logging to console for debugging
+  - Improved form reset logic with ref-based control
+- Fixed form clearing:
+  - Form now properly resets all fields after successful submission
+  - Ref-based approach ensures reliable form.reset() execution
+- Maintained all existing features:
+  - Loading states
+  - Success/error messages
+  - Auto-hide after 5 seconds
+  - Button disabled during submission
+
+**Files Affected**
+
+- components/sections/contact.tsx (UPDATED)
+- docs/logs.md (UPDATED)

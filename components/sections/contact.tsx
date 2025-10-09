@@ -3,7 +3,7 @@
 import type React from "react"
 import { Logo } from "@/components/logo"
 
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -12,23 +12,31 @@ import emailjs from "@emailjs/browser"
 
 export function Contact() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
+  const formRef = useRef<HTMLFormElement>(null)
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setStatus("loading")
 
     try {
-      const form = e.currentTarget
+      if (!formRef.current) {
+        throw new Error("Form reference not found")
+      }
       
-      await emailjs.sendForm(
+      const result = await emailjs.sendForm(
         'service_ljaq69a',  // Service ID
         'template_uo116zx', // Template ID
-        form,
+        formRef.current,
         'XKpSkLIQJS5dbqsVt' // Public Key
       )
       
+      console.log("Email sent successfully:", result.text)
       setStatus("success")
-      form.reset()
+      
+      // Clear the form
+      if (formRef.current) {
+        formRef.current.reset()
+      }
       
       // Reset success message after 5 seconds
       setTimeout(() => setStatus("idle"), 5000)
@@ -50,15 +58,15 @@ export function Contact() {
         </h2>
 
         <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">
-          <form onSubmit={handleSubmit} className="rounded-lg border border-border bg-card p-4 sm:p-5">
+          <form ref={formRef} onSubmit={handleSubmit} className="rounded-lg border border-border bg-card p-4 sm:p-5">
             <div className="grid gap-4">
               <div className="grid gap-2">
-                <Label htmlFor="name">Name</Label>
-                <Input id="name" name="name" placeholder="Jane Doe" required />
+                <Label htmlFor="from_name">Name</Label>
+                <Input id="from_name" name="from_name" placeholder="Jane Doe" required />
               </div>
               <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
-                <Input id="email" name="email" type="email" placeholder="jane@example.com" required />
+                <Label htmlFor="from_email">Email</Label>
+                <Input id="from_email" name="from_email" type="email" placeholder="jane@example.com" required />
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="message">Message</Label>
