@@ -1066,3 +1066,93 @@ Purpose: Track actions performed in the project along with the initiating user p
 - No card count cluttering the button
 - Users can collapse cards after expanding
 - Fixed toggle functionality working correctly
+
+---
+
+## 2025-10-11 — ACT-0028
+
+**User Prompt**
+
+> also the scroll effect for the home cta button doesnt seem to work check that out
+
+**Actions**
+
+- Updated `components/sections/hero.tsx`:
+  - Changed from `<a href="#...">` links to `onClick` handlers
+  - Removed `asChild` prop from Button components
+  - Implemented JavaScript `scrollIntoView()` API for smooth scrolling
+  - "Let's Colab" button: scrolls to `#contact` section
+  - "Why Us?" button: scrolls to `#overview` section
+  - Added explicit smooth behavior: `behavior: 'smooth', block: 'start'`
+  - Used `document.getElementById()` to find target sections
+  - Optional chaining (`?.`) for safety if element not found
+  - Both buttons now have direct onClick handlers instead of wrapping anchor tags
+
+**Files Changed**
+
+- components/sections/hero.tsx (UPDATED)
+- docs/activity.md (UPDATED)
+
+**Technical Details**
+
+- `scrollIntoView({ behavior: 'smooth', block: 'start' })` provides smooth scroll
+- Works reliably in client components ("use client" directive present)
+- More control than CSS `scroll-behavior: smooth` alone
+- JavaScript API ensures compatibility with client-side routing
+- `block: 'start'` aligns section to top of viewport
+- Optional chaining prevents errors if section IDs change
+
+**Outcome**
+
+- Hero CTA buttons now scroll smoothly to target sections
+- "Let's Colab" button scrolls to contact form
+- "Why Us?" button scrolls to bento grid/services section
+- Smooth animation with proper scroll behavior
+- More reliable than anchor links in Next.js client components
+- Better user experience with working scroll effects
+
+---
+
+## 2025-10-11 — ACT-0029
+
+**User Prompt**
+
+> the home button when pressed it instatly takes the user to home/landing page, rather than the smooth scroll effect, the effect is working perfect for all the other cta buttons only the "Home" button has issues
+
+**Actions**
+
+- Updated `components/site-header.tsx`:
+  - Changed logo/brand button from `<Link href="/">` to onClick handler
+  - Changed desktop "Home" nav link to button with onClick handler
+  - Changed mobile "Home" nav link to button with onClick handler
+  - Implemented smart navigation logic:
+    - If on home page (`pathname === '/'`): smooth scroll to top with `window.scrollTo({ top: 0, behavior: 'smooth' })`
+    - If on different page: navigate to home with `window.location.href = '/'`
+  - Updated all three "Home" buttons:
+    1. Logo/brand button (top left)
+    2. Desktop navigation "Home" link
+    3. Mobile menu "Home" link
+  - Added `cursor-pointer` class for proper cursor feedback
+  - Added `text-left` alignment for mobile menu button
+
+**Files Changed**
+
+- components/site-header.tsx (UPDATED)
+- docs/activity.md (UPDATED)
+
+**Technical Details**
+
+- Uses `window.location.pathname` to check current route
+- `window.scrollTo({ top: 0, behavior: 'smooth' })` for smooth scroll to top
+- Maintains existing styling with button elements instead of Link components
+- Works in both desktop and mobile navigation
+- Client component ("use client" directive present)
+
+**Outcome**
+
+- Home button now smoothly scrolls to top when already on home page
+- No more instant jump - uses smooth scroll animation
+- Navigates normally when on other pages (e.g., industries page)
+- Logo/brand click also smoothly scrolls to top on home page
+- Consistent smooth scroll behavior across all navigation elements
+- Better user experience with proper scroll animations

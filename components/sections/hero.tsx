@@ -28,11 +28,26 @@ export function Hero() {
           creating stories, experiences, and impact
         </p>
         <div id="hero-cta-wrap" className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
-          <Button size="sm" className="text-xs sm:text-sm md:text-base" asChild>
-            <a href="#contact">{"Let's Colab"}</a>
+          <Button 
+            size="sm" 
+            className="text-xs sm:text-sm md:text-base"
+            onClick={() => {
+              const element = document.getElementById('contact');
+              element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }}
+          >
+            {"Let's Colab"}
           </Button>
-          <Button size="sm" className="text-xs sm:text-sm md:text-base" variant="outline" asChild>
-            <a href="#overview">Why Us?</a>
+          <Button 
+            size="sm" 
+            className="text-xs sm:text-sm md:text-base" 
+            variant="outline"
+            onClick={() => {
+              const element = document.getElementById('overview');
+              element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }}
+          >
+            Why Us?
           </Button>
         </div>
       </div>

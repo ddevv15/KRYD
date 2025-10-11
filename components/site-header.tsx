@@ -30,14 +30,35 @@ export function SiteHeader({}: SiteHeaderProps = {}) {
       )}
     >
       <div id="site-header-inner" className={cn("mx-auto flex items-center justify-between px-3 py-2 sm:px-4")}> 
-        <Link id="site-header-home" href="/" className="inline-flex items-center gap-2">
+        <button 
+          id="site-header-home" 
+          onClick={() => {
+            if (window.location.pathname === '/') {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+              window.location.href = '/';
+            }
+          }}
+          className="inline-flex items-center gap-2 cursor-pointer"
+        >
           <span className="sr-only">Home</span>
           <Logo className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 shrink-0" alt="" aria-hidden />
           <span className={cn("text-sm font-medium tracking-tight", "text-white")}>KRYD CoLabs</span>
-        </Link>
+        </button>
 
         <nav id="site-header-nav" aria-label="Primary" className="hidden items-center gap-6 sm:flex">
-          <Link href="/" className={cn("text-sm text-white/80 hover:text-white")}>Home</Link>
+          <button 
+            onClick={() => {
+              if (window.location.pathname === '/') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              } else {
+                window.location.href = '/';
+              }
+            }}
+            className={cn("text-sm text-white/80 hover:text-white cursor-pointer")}
+          >
+            Home
+          </button>
           <Link href="/#who-we-are" className={cn("text-sm text-white/80 hover:text-white")}>Who We Are</Link>
           <Link href="/#overview" className={cn("text-sm text-white/80 hover:text-white")}>Services</Link>
           <Link href="/industries" className={cn("text-sm text-white/80 hover:text-white")}>Industries</Link>
@@ -66,7 +87,18 @@ export function SiteHeader({}: SiteHeaderProps = {}) {
               </SheetHeader>
               <nav className="mt-6 flex flex-col gap-3">
                 <SheetClose asChild>
-                  <Link href="/" className="rounded-md px-2 py-2 text-white/90 hover:text-white hover:bg-white/10">Home</Link>
+                  <button 
+                    onClick={() => {
+                      if (window.location.pathname === '/') {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      } else {
+                        window.location.href = '/';
+                      }
+                    }}
+                    className="rounded-md px-2 py-2 text-white/90 hover:text-white hover:bg-white/10 text-left"
+                  >
+                    Home
+                  </button>
                 </SheetClose>
                 <SheetClose asChild>
                   <Link href="/#who-we-are" className="rounded-md px-2 py-2 text-white/90 hover:text-white hover:bg-white/10">Who We Are</Link>
