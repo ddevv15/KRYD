@@ -617,6 +617,30 @@ export function MagicBentoSection({
   const gridRef = useRef<HTMLDivElement>(null);
   const isMobile = useMobileDetection();
   const shouldDisableAnimations = disableAnimations || isMobile;
+  const [showAllCards, setShowAllCards] = useState(false);
+
+  // On mobile, show specific cards initially:
+  // Why Us header + 2 Why Us cards + Services header + 2 Service cards
+  const getVisibleCards = () => {
+    if (!isMobile || showAllCards) {
+      return cardData;
+    }
+
+    const whyUsHeader = cardData.find(card => card.category === 'header' && card.label === 'Why Us');
+    const whyUsCards = cardData.filter(card => card.category === 'why-us').slice(0, 2);
+    const servicesHeader = cardData.find(card => card.category === 'header' && card.label === 'Our Services');
+    const serviceCards = cardData.filter(card => card.category === 'service').slice(0, 2);
+
+    return [
+      whyUsHeader,
+      ...whyUsCards,
+      servicesHeader,
+      ...serviceCards
+    ].filter(Boolean) as BentoCardProps[];
+  };
+
+  const visibleCards = getVisibleCards();
+  const hiddenCardsCount = cardData.length - visibleCards.length;
 
   return (
     <section id="overview" aria-labelledby="magic-bento-section" className="bg-black py-14 sm:py-16 md:py-20 w-full">
@@ -830,7 +854,7 @@ export function MagicBentoSection({
 
       <BentoCardGrid gridRef={gridRef}>
         <div className="card-responsive grid gap-2">
-          {cardData.map((card, index) => {
+          {visibleCards.map((card, index) => {
             const baseClassName = `card flex flex-col justify-between relative h-full w-full max-w-full p-5 rounded-[20px] border border-solid font-light overflow-hidden transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(0,0,0,0.15)] ${
               enableBorderGlow ? 'card--border-glow' : ''
             }`;
@@ -916,6 +940,18 @@ export function MagicBentoSection({
             );
           })}
         </div>
+        
+        {/* Show More/Less Button - Only visible on mobile when there are cards to show/hide */}
+        {isMobile && cardData.length > 6 && (
+          <div className="mt-6 flex justify-center">
+            <button
+              onClick={() => setShowAllCards(!showAllCards)}
+              className="px-6 py-3 bg-white/10 hover:bg-white/15 text-white font-semibold rounded-xl border border-white/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+            >
+              {showAllCards ? 'Show Less' : 'Show More'}
+            </button>
+          </div>
+        )}
       </BentoCardGrid>
     </section>
   );
