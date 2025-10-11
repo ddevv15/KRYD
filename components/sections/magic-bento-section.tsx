@@ -41,7 +41,7 @@ const cardData: BentoCardProps[] = [
   {
     color: '#060010',
     title: 'Why Us',
-    description: 'Your business deserves more than surface-level work. We deliver with intention and integrity.',
+    description: 'Your business deserves more than surface level work. We deliver with intention and integrity.',
     label: 'Why Us',
     category: 'header'
   },
@@ -49,28 +49,28 @@ const cardData: BentoCardProps[] = [
   {
     color: '#060010',
     title: 'Authenticity at Core',
-    description: 'Bringing honesty, integrity, and real care to every project — because trust matters.',
+    description: 'Bringing honesty, integrity, and real care to every project, because trust matters.',
     label: 'Values',
     category: 'why-us'
   },
   {
     color: '#060010',
-    title: 'End-to-End Solutions',
-    description: 'Social media, events, ads, promotions — all under one roof, so you save time, energy, and mental load.',
+    title: 'End to End Solutions',
+    description: 'Social media, events, ads, and promotions, all under one roof so you save time, energy, and mental load.',
     label: 'Complete',
     category: 'why-us'
   },
   {
     color: '#060010',
     title: 'Growth Mindset',
-    description: 'We not only help you stand out — we help you scale smartly.',
+    description: 'We not only help you stand out, but we also help you scale smartly.',
     label: 'Scale',
     category: 'why-us'
   },
   {
     color: '#060010',
     title: 'Value Over Vanity',
-    description: 'No fluff. No empty metrics. Only meaningful results.',
+    description: 'No fluff. No meaningless metrics. Only meaningful results.',
     label: 'Results',
     category: 'why-us'
   },
@@ -78,14 +78,14 @@ const cardData: BentoCardProps[] = [
   {
     color: '#060010',
     title: 'Event Management',
-    description: 'From intimate gatherings to large-scale experiences, we plan and execute events that leave lasting impressions.',
+    description: 'From intimate gatherings to large scale experiences, we plan and execute events that leave lasting impressions.',
     label: 'Events',
     category: 'service'
   },
   {
     color: '#060010',
     title: 'Digital Marketing',
-    description: 'Data-driven strategies and targeted campaigns to help your brand reach the right audience and achieve measurable results.',
+    description: 'Data driven strategies and targeted campaigns to help your brand reach the right audience and achieve measurable results.',
     label: 'Marketing',
     category: 'service'
   },
@@ -568,7 +568,7 @@ const BentoCardGrid: React.FC<{
   gridRef?: React.RefObject<HTMLDivElement | null>;
 }> = ({ children, gridRef }) => (
   <div
-    className="bento-section mx-auto max-w-6xl w-full select-none relative px-4 sm:px-6 md:px-8"
+    className="bento-section mx-auto max-w-7xl w-full select-none relative px-4 sm:px-6 md:px-8"
     style={{ fontSize: 'clamp(1rem, 0.9rem + 0.5vw, 1.5rem)' }}
     ref={gridRef}
   >
@@ -651,10 +651,10 @@ export function MagicBentoSection({
             }
           }
           
-          @media (min-width: 1024px) {
+            @media (min-width: 1024px) {
             .card-responsive {
               grid-template-columns: repeat(4, 1fr);
-              grid-template-rows: repeat(5, minmax(200px, 1fr));
+              grid-template-rows: repeat(5, minmax(240px, auto));
               gap: 0.5rem;
             }
             
@@ -767,23 +767,6 @@ export function MagicBentoSection({
             box-shadow: 0 4px 20px rgba(58, 41, 255, 0.2), 0 0 30px rgba(255, 148, 180, 0.2);
           }
           
-          .text-clamp-1 {
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 1;
-            line-clamp: 1;
-            overflow: hidden;
-            text-overflow: ellipsis;
-          }
-          
-          .text-clamp-2 {
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 2;
-            line-clamp: 2;
-            overflow: hidden;
-            text-overflow: ellipsis;
-          }
           
           @media (max-width: 599px) {
             .card-responsive {
@@ -796,7 +779,7 @@ export function MagicBentoSection({
             
             .card-responsive .card {
               width: 100%;
-              min-height: 180px;
+              min-height: 200px;
             }
             
             /* Mobile card order: Big Why Us → Why Us cards → Big Services → Service cards */
@@ -888,16 +871,11 @@ export function MagicBentoSection({
                     </div>
                   ) : (
                     <>
-                      <div className="card__header flex justify-between gap-3 relative text-white">
-                        <span className="card__label text-base">{card.label}</span>
+                      <div className="card__header flex justify-between gap-3 relative text-white mb-6">
+                        <span className="card__label text-base font-semibold">{card.title}</span>
                       </div>
-                      <div className="card__content flex flex-col relative text-white">
-                        <h3 className={`card__title font-normal text-base m-0 mb-1 ${textAutoHide ? 'text-clamp-1' : ''}`}>
-                          {card.title}
-                        </h3>
-                        <p
-                          className={`card__description text-xs leading-5 opacity-90 ${textAutoHide ? 'text-clamp-2' : ''}`}
-                        >
+                      <div className="card__content flex flex-col relative text-white flex-1 justify-end">
+                        <p className="card__description text-sm leading-relaxed opacity-90">
                           {card.description}
                         </p>
                       </div>
@@ -924,14 +902,11 @@ export function MagicBentoSection({
                   </div>
                 ) : (
                   <>
-                    <div className="card__header flex justify-between gap-3 relative text-white">
-                      <span className="card__label text-base">{card.label}</span>
+                    <div className="card__header flex justify-between gap-3 relative text-white mb-6">
+                      <span className="card__label text-base font-semibold">{card.title}</span>
                     </div>
-                    <div className="card__content flex flex-col relative text-white">
-                      <h3 className={`card__title font-normal text-base m-0 mb-1 ${textAutoHide ? 'text-clamp-1' : ''}`}>
-                        {card.title}
-                      </h3>
-                      <p className={`card__description text-xs leading-5 opacity-90 ${textAutoHide ? 'text-clamp-2' : ''}`}>
+                    <div className="card__content flex flex-col relative text-white flex-1 justify-end">
+                      <p className="card__description text-sm leading-relaxed opacity-90">
                         {card.description}
                       </p>
                     </div>

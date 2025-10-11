@@ -51,7 +51,7 @@ export function Contact() {
 
   return (
     <section id="contact" aria-labelledby="contact-title" className="bg-black">
-      <div className="mx-auto max-w-6xl px-4 py-14 sm:py-16 md:py-20">
+      <div className="mx-auto max-w-7xl px-4 py-14 sm:py-16 md:py-20">
         <h2 id="contact-title" className="text-balance text-2xl sm:text-3xl font-semibold flex items-center gap-2">
           <Logo className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12" alt="" aria-hidden />
           <span>Let’s collaborate</span>
