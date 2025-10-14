@@ -62,11 +62,11 @@ export function Contact() {
             <div className="grid gap-4">
               <div className="grid gap-2">
                 <Label htmlFor="from_name">Name</Label>
-                <Input id="from_name" name="from_name" placeholder="Jane Doe" required />
+                <Input id="from_name" name="from_name" placeholder="Your Name" required />
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="from_email">Email</Label>
-                <Input id="from_email" name="from_email" type="email" placeholder="jane@example.com" required />
+                <Input id="from_email" name="from_email" type="email" placeholder="Your Email" required />
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="message">Message</Label>

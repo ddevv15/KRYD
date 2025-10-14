@@ -35,46 +35,18 @@ const AURORA_PINK = '255, 148, 180'; // #FF94B4
 const AURORA_RED = '255, 50, 50'; // #FF3232
 const MOBILE_BREAKPOINT = 768;
 
-// Card data: 1 big Why Us + 4 Why Us cards + 6 Service cards + 1 big Services
+// Card data: 1 big Services + 6 Service cards + 4 Why Us cards + 1 big Why Us
 const cardData: BentoCardProps[] = [
-  // Big Why Us Header (left top, spans 2x2)
+  // Big Services Header (left top, spans 2x3)
   {
     color: '#060010',
-    title: 'Why Us',
-    description: 'Your business deserves more than surface level work. We deliver with intention and integrity.',
-    label: 'Why Us',
-    category: 'header'
+    title: 'Our Services',
+    description: 'Creativity, strategy, and execution to make a lasting impression.',
+    label: 'Our Services',
+    category: 'header',
+    span: 'row-span-3'
   },
-  // Why Us Value Cards (right top, 2x2 grid)
-  {
-    color: '#060010',
-    title: 'Authenticity at Core',
-    description: 'Bringing honesty, integrity, and real care to every project, because trust matters.',
-    label: 'Values',
-    category: 'why-us'
-  },
-  {
-    color: '#060010',
-    title: 'End to End Solutions',
-    description: 'Social media, events, ads, and promotions, all under one roof so you save time, energy, and mental load.',
-    label: 'Complete',
-    category: 'why-us'
-  },
-  {
-    color: '#060010',
-    title: 'Growth Mindset',
-    description: 'We not only help you stand out, but we also help you scale smartly.',
-    label: 'Scale',
-    category: 'why-us'
-  },
-  {
-    color: '#060010',
-    title: 'Value Over Vanity',
-    description: 'No fluff. No meaningless metrics. Only meaningful results.',
-    label: 'Results',
-    category: 'why-us'
-  },
-  // Service Cards (left bottom, 3x2 or 2x3 grid)
+  // Service Cards (right top, 2x3 grid)
   {
     color: '#060010',
     title: 'Event Management',
@@ -117,13 +89,43 @@ const cardData: BentoCardProps[] = [
     label: 'Apps',
     category: 'service'
   },
-  // Big Services Header (right bottom, spans 2x2)
+  // Why Us Value Cards (left bottom, 2x2 grid)
   {
     color: '#060010',
-    title: 'Our Services',
-    description: 'Creativity, strategy, and execution to make a lasting impression.',
-    label: 'Our Services',
-    category: 'header'
+    title: 'Authenticity at Core',
+    description: 'Bringing honesty, integrity, and real care to every project, because trust matters.',
+    label: 'Values',
+    category: 'why-us'
+  },
+  {
+    color: '#060010',
+    title: 'End to End Solutions',
+    description: 'Social media, events, ads, and promotions, all under one roof so you save time, energy, and mental load.',
+    label: 'Complete',
+    category: 'why-us'
+  },
+  {
+    color: '#060010',
+    title: 'Growth Mindset',
+    description: 'We not only help you stand out, but we also help you scale smartly.',
+    label: 'Scale',
+    category: 'why-us'
+  },
+  {
+    color: '#060010',
+    title: 'Value Over Vanity',
+    description: 'No fluff. No meaningless metrics. Only meaningful results.',
+    label: 'Results',
+    category: 'why-us'
+  },
+  // Big Why Us Header (right bottom, spans 2x2)
+  {
+    color: '#060010',
+    title: 'Why Us',
+    description: 'Your business deserves more than surface level work. We deliver with intention and integrity.',
+    label: 'Why Us',
+    category: 'header',
+    span: 'row-span-2'
   }
 ];
 
@@ -620,22 +622,22 @@ export function MagicBentoSection({
   const [showAllCards, setShowAllCards] = useState(false);
 
   // On mobile, show specific cards initially:
-  // Why Us header + 2 Why Us cards + Services header + 2 Service cards
+  // Services header + 2 Service cards + Why Us header + 2 Why Us cards
   const getVisibleCards = () => {
     if (!isMobile || showAllCards) {
       return cardData;
     }
 
-    const whyUsHeader = cardData.find(card => card.category === 'header' && card.label === 'Why Us');
-    const whyUsCards = cardData.filter(card => card.category === 'why-us').slice(0, 2);
     const servicesHeader = cardData.find(card => card.category === 'header' && card.label === 'Our Services');
     const serviceCards = cardData.filter(card => card.category === 'service').slice(0, 2);
+    const whyUsHeader = cardData.find(card => card.category === 'header' && card.label === 'Why Us');
+    const whyUsCards = cardData.filter(card => card.category === 'why-us').slice(0, 2);
 
     return [
-      whyUsHeader,
-      ...whyUsCards,
       servicesHeader,
-      ...serviceCards
+      ...serviceCards,
+      whyUsHeader,
+      ...whyUsCards
     ].filter(Boolean) as BentoCardProps[];
   };
 
@@ -682,13 +684,13 @@ export function MagicBentoSection({
               gap: 0.5rem;
             }
             
-            /* Big Why Us - left top, span 2x2 */
+            /* Big Services Header - left top, span 2x3 */
             .card-responsive .card:nth-child(1) {
               grid-column: 1 / span 2;
-              grid-row: 1 / span 2;
+              grid-row: 1 / span 3;
             }
             
-            /* 4 Why Us value cards - right top, 2x2 grid */
+            /* 6 Service cards - right top, 2x3 grid */
             .card-responsive .card:nth-child(2) {
               grid-column: 3;
               grid-row: 1;
@@ -709,17 +711,17 @@ export function MagicBentoSection({
               grid-row: 2;
             }
             
-            /* 6 Service cards - left bottom, 3x2 grid */
             .card-responsive .card:nth-child(6) {
-              grid-column: 1;
+              grid-column: 3;
               grid-row: 3;
             }
             
             .card-responsive .card:nth-child(7) {
-              grid-column: 2;
+              grid-column: 4;
               grid-row: 3;
             }
             
+            /* 4 Why Us value cards - left bottom, 2x2 grid */
             .card-responsive .card:nth-child(8) {
               grid-column: 1;
               grid-row: 4;
@@ -740,10 +742,10 @@ export function MagicBentoSection({
               grid-row: 5;
             }
             
-            /* Big Services - right bottom, aligned with 3 rows of service cards */
+            /* Big Why Us Header - right bottom, span 2x2 */
             .card-responsive .card:nth-child(12) {
               grid-column: 3 / span 2;
-              grid-row: 3 / 6;
+              grid-row: 4 / span 2;
             }
           }
           
@@ -806,19 +808,19 @@ export function MagicBentoSection({
               min-height: 200px;
             }
             
-            /* Mobile card order: Big Why Us → Why Us cards → Big Services → Service cards */
-            .card-responsive .card:nth-child(1) { order: 0; } /* Big Why Us */
-            .card-responsive .card:nth-child(2) { order: 1; } /* Why Us value 1 */
-            .card-responsive .card:nth-child(3) { order: 2; } /* Why Us value 2 */
-            .card-responsive .card:nth-child(4) { order: 3; } /* Why Us value 3 */
-            .card-responsive .card:nth-child(5) { order: 4; } /* Why Us value 4 */
-            .card-responsive .card:nth-child(12) { order: 5; } /* Big Services - moved up */
-            .card-responsive .card:nth-child(6) { order: 6; } /* Service 1 */
-            .card-responsive .card:nth-child(7) { order: 7; } /* Service 2 */
-            .card-responsive .card:nth-child(8) { order: 8; } /* Service 3 */
-            .card-responsive .card:nth-child(9) { order: 9; } /* Service 4 */
-            .card-responsive .card:nth-child(10) { order: 10; } /* Service 5 */
-            .card-responsive .card:nth-child(11) { order: 11; } /* Service 6 */
+            /* Mobile card order: Big Services → Service cards → Big Why Us → Why Us cards */
+            .card-responsive .card:nth-child(1) { order: 0; } /* Big Services */
+            .card-responsive .card:nth-child(2) { order: 1; } /* Service 1 */
+            .card-responsive .card:nth-child(3) { order: 2; } /* Service 2 */
+            .card-responsive .card:nth-child(4) { order: 3; } /* Service 3 */
+            .card-responsive .card:nth-child(5) { order: 4; } /* Service 4 */
+            .card-responsive .card:nth-child(6) { order: 5; } /* Service 5 */
+            .card-responsive .card:nth-child(7) { order: 6; } /* Service 6 */
+            .card-responsive .card:nth-child(12) { order: 7; } /* Big Why Us - moved down */
+            .card-responsive .card:nth-child(8) { order: 8; } /* Why Us value 1 */
+            .card-responsive .card:nth-child(9) { order: 9; } /* Why Us value 2 */
+            .card-responsive .card:nth-child(10) { order: 10; } /* Why Us value 3 */
+            .card-responsive .card:nth-child(11) { order: 11; } /* Why Us value 4 */
           }
           
           /* Performance: GPU acceleration hints */
@@ -857,7 +859,7 @@ export function MagicBentoSection({
           {visibleCards.map((card, index) => {
             const baseClassName = `card flex flex-col justify-between relative h-full w-full max-w-full p-5 rounded-[20px] border border-solid font-light overflow-hidden transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(0,0,0,0.15)] ${
               enableBorderGlow ? 'card--border-glow' : ''
-            }`;
+            } ${card.span || ''}`;
 
             const cardStyle = {
               backgroundColor: card.color || 'var(--background-dark)',

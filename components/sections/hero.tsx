@@ -15,7 +15,7 @@ export function Hero() {
       <div id="hero-content" className="relative z-10 mx-auto grid min-h-dvh max-w-7xl grid-cols-1 place-content-center place-items-center gap-5 px-4 py-20 text-center text-foreground sm:gap-6 sm:py-24 md:py-28">
         <h1 id="hero-title" className="text-balance text-3xl font-semibold leading-tight sm:text-4xl md:text-6xl">
           <TextType 
-            text={["From Clicks to Connections to Customers.", "Creating Stories, Experiences, and Impact.", "Building Brands That Matter."]}
+            text={["Big Dreams Deserve Bold Executions.", "Crafting Connections that go Beyond Clicks.", "Building Brands that Matter."]}
             typingSpeed={75}
             pauseDuration={2000}
             showCursor={true}
@@ -25,7 +25,7 @@ export function Hero() {
           />
         </h1>
         <p id="hero-copy" className="text-pretty text-sm text-muted-foreground sm:text-base md:text-lg lg:text-xl">
-          creating stories, experiences, and impact
+          Creating stories, Experiences, and Impact
         </p>
         <div id="hero-cta-wrap" className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
           <Button 

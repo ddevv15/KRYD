@@ -918,3 +918,54 @@ Purpose: Track actions performed in the project along with the initiating user p
 - Engaging, modern animation draws attention
 - Professional animated hero section
 - Maintains all responsive styling and layout
+
+---
+
+## 2025-10-11 — ACT-0031
+
+**User Prompt**
+
+> reorganize the bento grid according to the image shown we just have to reorganize the current layout
+
+**Actions**
+
+- Updated `components/sections/magic-bento-section.tsx`:
+  - Reorganized `cardData` array to match image layout:
+    - **Top section**: 1 Big Services header (left, 2x3 span) + 6 Service cards (right, 2x3 grid)
+    - **Bottom section**: 4 Why Us value cards (left, 2x2 grid) + 1 Big Why Us header (right, 2x2 span)
+  - Added `span` property to header cards:
+    - Services header: `span: 'row-span-3'` (spans 3 rows)
+    - Why Us header: `span: 'row-span-2'` (spans 2 rows)
+  - Updated CSS grid positioning for desktop (1024px+):
+    - Card 1 (Services header): `grid-column: 1 / span 2; grid-row: 1 / span 3`
+    - Cards 2-7 (Services): Positioned in 2x3 grid on right (columns 3-4, rows 1-3)
+    - Cards 8-11 (Why Us values): Positioned in 2x2 grid on left (columns 1-2, rows 4-5)
+    - Card 12 (Why Us header): `grid-column: 3 / span 2; grid-row: 4 / span 2`
+  - Updated mobile card order to match new layout
+  - Updated `getVisibleCards()` for mobile preview:
+    - Shows: Services header + 2 Services + Why Us header + 2 Why Us values
+  - Added `${card.span || ''}` to baseClassName for dynamic span classes
+
+**Files Changed**
+
+- components/sections/magic-bento-section.tsx (UPDATED)
+- docs/activity.md (UPDATED)
+
+**Technical Details**
+
+- New card order: [Services header, 6 Services, 4 Why Us values, Why Us header]
+- Desktop grid: 4 columns × 5 rows
+- CSS nth-child selectors updated for all 12 card positions
+- Mobile flexbox order updated to maintain logical flow
+- Span classes applied dynamically via card.span property
+- Grid layout matches wireframe: large cards anchor each section, smaller cards fill grid
+
+**Outcome**
+
+- Bento grid now matches provided wireframe image
+- Services section prominently displayed at top (left large card + right grid)
+- Why Us section at bottom (left grid + right large card)
+- Visual balance: large cards anchor corners, smaller cards create dynamic grid
+- Mobile layout flows logically: Services → Why Us
+- Desktop layout creates interesting asymmetry with varied card sizes
+- All animations, hover effects, and functionality preserved
