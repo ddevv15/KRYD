@@ -969,3 +969,79 @@ Purpose: Track actions performed in the project along with the initiating user p
 - Mobile layout flows logically: Services → Why Us
 - Desktop layout creates interesting asymmetry with varied card sizes
 - All animations, hover effects, and functionality preserved
+
+---
+
+## 2025-10-24 — ACT-0032
+
+**User Prompt**
+
+> I have an update to make in the website, the selected piece of code needs to be changed, in this container next to the contact form I wish to showcase some quotes and facts rather than this static text, I have already generated the list of quotes and facts, the quote/fact should change at every refresh made, tell me where should i add the file in the folder structure so we can start implementing this feature into our existing website
+
+> Okay I have json files for it and a txt file create the directory and i will add those files into the directory
+
+> I have added the text files and quotes file, lets format them accordingly, everything is grouped theme wise, create a new file which include the content of all of these 6 files and format them correctly follow a similar theme, and then we can start implementing the feature
+
+**Actions**
+
+- Created `/data/` directory at project root for storing quotes and facts data
+- User added 6 files to the directory:
+  - `facts.txt` - 110 digital marketing facts grouped by 10 categories
+  - `quotes_batch_1.json` through `quotes_batch_5.json` - Inspirational quotes grouped by 11 themes
+- Created consolidated `/data/quotes-and-facts.ts` TypeScript file combining all content:
+  - 110 marketing facts organized by category (General Digital Marketing, Mobile Marketing, Content Marketing, Social Media, Email, Video, SEO, PPC, Affiliate/Influencer, E-commerce)
+  - 60+ inspirational quotes organized by theme (freedom, inspiration, excellence, work, leadership, time, truth, fear, failure, confidence, dreams)
+  - TypeScript interfaces (`Quote` and `Fact`) for type safety
+  - Utility functions for random selection and filtering
+
+**Files Changed**
+
+- data/ (NEW DIRECTORY)
+- data/quotes-and-facts.ts (NEW FILE)
+- docs/activity.md (UPDATED)
+
+**Technical Details**
+
+- Combined 6 separate files into single consolidated TypeScript module
+- Defined TypeScript interfaces:
+  - `Quote`: id, theme, text, author
+  - `Fact`: category, text
+- Created utility functions:
+  - `getRandomFact()` - Returns random marketing fact
+  - `getRandomQuote()` - Returns random quote
+  - `getRandomItem()` - Returns either fact or quote randomly (50/50)
+  - `getFactsByCategory(category)` - Filter facts by category
+  - `getQuotesByTheme(theme)` - Filter quotes by theme
+  - `getFactCategories()` - Get all fact categories
+  - `getQuoteThemes()` - Get all quote themes
+
+**Implementation**
+
+- Updated `components/sections/contact.tsx`:
+  - Added imports: `useMemo` hook, `getRandomItem`, type imports for `Quote` and `Fact`
+  - Created `randomItem` state using `useMemo(() => getRandomItem(), [])` to select random item on page load
+  - Replaced static "How we work" content with dynamic display
+  - Conditional rendering based on item type:
+    - **If Quote**: Shows theme category, blockquote styling, text in italics, author attribution
+    - **If Fact**: Shows "Did you know?" prefix with category, fact text with accent border
+  - Added unique ID `quote-fact-display` to aside container
+  - Styled with consistent spacing, typography, and border accents
+
+**Design Features**
+
+- Quotes display with elegant blockquote styling and italic text
+- Facts display with "Did you know?" header
+- Both show category/theme in small uppercase text
+- Left border accent using primary color
+- Proper text hierarchy and spacing
+- Fully responsive design
+- Changes on every page refresh
+
+**Outcome**
+
+- ✓ Dynamic quotes and facts now display in contact section
+- ✓ Content changes randomly on each page refresh
+- ✓ Beautifully styled to match existing design system
+- ✓ Type-safe implementation with TypeScript
+- ✓ 170+ unique quotes and facts available
+- ✓ No linting errors

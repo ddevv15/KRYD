@@ -3,16 +3,25 @@
 import type React from "react"
 import { Logo } from "@/components/logo"
 
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import emailjs from "@emailjs/browser"
+import { getRandomItem, type Quote, type Fact } from "@/data/quotes-and-facts"
 
 export function Contact() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
   const formRef = useRef<HTMLFormElement>(null)
+  
+  // Client-only random quote/fact to avoid hydration mismatch
+  const [randomItem, setRandomItem] = useState<Quote | Fact | null>(null)
+  
+  useEffect(() => {
+    // Set random item only on client-side after mount
+    setRandomItem(getRandomItem())
+  }, [])
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -86,13 +95,48 @@ export function Contact() {
             </div>
           </form>
 
-          <aside className="rounded-lg border border-border bg-card p-4 sm:p-5">
-            <h3 className="text-sm font-medium">How we work</h3>
-            <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-muted-foreground">
-              <li>Start with a solid, accessible foundation.</li>
-              <li>Iterate quickly with clear milestones.</li>
-              <li>Scale features as your needs evolve.</li>
-            </ul>
+          <aside id="quote-fact-display" className="rounded-lg border border-border bg-card p-8 sm:p-10 flex items-center justify-center min-h-[300px]">
+            {!randomItem ? (
+              // Loading skeleton placeholder
+              <div className="space-y-6 text-center max-w-2xl w-full animate-pulse">
+                <div className="h-4 bg-muted rounded w-32 mx-auto" />
+                <div className="space-y-3">
+                  <div className="h-8 bg-muted rounded w-full" />
+                  <div className="h-8 bg-muted rounded w-5/6 mx-auto" />
+                  <div className="h-8 bg-muted rounded w-4/6 mx-auto" />
+                </div>
+                <div className="h-5 bg-muted rounded w-24 mx-auto" />
+              </div>
+            ) : 'author' in randomItem ? (
+              // Display Quote
+              <div className="space-y-6 text-center max-w-2xl">
+                <h3 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
+                  Inspiration · {randomItem.theme}
+                </h3>
+                <blockquote className="space-y-4">
+                  <p className="text-2xl sm:text-3xl font-medium italic leading-relaxed text-foreground">
+                    "{randomItem.text}"
+                  </p>
+                  <footer className="text-base sm:text-lg text-muted-foreground font-medium">
+                    — {randomItem.author}
+                  </footer>
+                </blockquote>
+              </div>
+            ) : (
+              // Display Fact
+              <div className="space-y-6 text-center max-w-2xl">
+                <h3 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
+                  Did you know? · {randomItem.category}
+                </h3>
+                <div className="relative px-6">
+                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-primary rounded-full" />
+                  <div className="absolute right-0 top-0 bottom-0 w-1 bg-primary rounded-full" />
+                  <p className="text-xl sm:text-2xl leading-relaxed text-foreground font-medium">
+                    {randomItem.text}
+                  </p>
+                </div>
+              </div>
+            )}
           </aside>
         </div>
       </div>
