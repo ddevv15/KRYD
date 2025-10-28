@@ -1071,14 +1071,15 @@ Purpose: Track actions performed in the project along with the initiating user p
   2. Parsed 644 verified quotes from markdown files across 11 themes
   3. Generated theme-based quote IDs (e.g., `freedom-1`, `inspiration-1`, `excellence-1`, etc.)
   4. Inserted complete QUOTES array into `data/quotes-and-facts.ts`
-  
 - **Quote Structure Implemented:**
+
   - Format: `{ id: string, theme: string, text: string, author: string }`
   - No source information or year (as per user preference - Option A)
   - Theme-based ID generation (Option B)
   - All 644 quotes from 10 markdown files included
 
 - **Quote Distribution by Theme:**
+
   - Freedom: 58 quotes (IDs: freedom-1 to freedom-58)
   - Inspiration: 58 quotes (IDs: inspiration-1 to inspiration-58)
   - Excellence: 58 quotes (IDs: excellence-1 to excellence-58)
@@ -1125,3 +1126,39 @@ Purpose: Track actions performed in the project along with the initiating user p
 - ✓ Clean TypeScript implementation with proper typing
 - ✓ All utility functions working with expanded dataset
 - ✓ Ready for display in contact section and throughout site
+
+---
+
+## 2025-10-28 — ACT-0034
+
+**User Prompt**
+
+> now one more small change is that, when we are showcasing the quotes the header should be "Quote Of The Day" and when showcasing facts it should say "Fact Of The Day" currecntly is shows inspirational and the theme for the quotes lets change that
+
+**Actions**
+
+- Updated `components/sections/contact.tsx`:
+  - Changed quote header from "Inspiration · {theme}" to "Quote Of The Day"
+  - Changed fact header from "Did you know? · {category}" to "Fact Of The Day"
+  - Removed theme/category display from headers
+  - Simplified header text for cleaner, more universal presentation
+
+**Files Changed**
+
+- components/sections/contact.tsx (UPDATED)
+- docs/activity.md (UPDATED)
+
+**Technical Details**
+
+- Line 114: Quote header now shows "Quote Of The Day" (was "Inspiration · {randomItem.theme}")
+- Line 129: Fact header now shows "Fact Of The Day" (was "Did you know? · {randomItem.category}")
+- Headers remain uppercase with tracking-widest for consistent styling
+- No changes to quote/fact content display or styling
+
+**Outcome**
+
+- ✓ Cleaner, more professional headers
+- ✓ Universal "Of The Day" format for both quotes and facts
+- ✓ No theme/category clutter in headers
+- ✓ Better visual consistency
+- ✓ More engaging presentation for users

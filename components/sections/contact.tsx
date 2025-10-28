@@ -111,7 +111,7 @@ export function Contact() {
               // Display Quote
               <div className="space-y-6 text-center max-w-2xl">
                 <h3 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
-                  Inspiration · {randomItem.theme}
+                  Quote Of The Day
                 </h3>
                 <blockquote className="space-y-4">
                   <p className="text-2xl sm:text-3xl font-medium italic leading-relaxed text-foreground">
@@ -126,7 +126,7 @@ export function Contact() {
               // Display Fact
               <div className="space-y-6 text-center max-w-2xl">
                 <h3 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
-                  Did you know? · {randomItem.category}
+                  Fact Of The Day
                 </h3>
                 <div className="relative px-6">
                   <div className="absolute left-0 top-0 bottom-0 w-1 bg-primary rounded-full" />
